@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja" xml:lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Fortnite</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-image: url("./click2.jpg");
+            background-size: contain;
+            background-position: center;
+            background-repeat: space;
+            background-color: white;
+        }
+
+        .invisible {
+            display: none;
+        }
+
+        .invert {
+            filter: invert(100%);
+        }
+
+        #youtube {
+            width: 100%;
+            aspect-ratio: 16/9;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        #youtube iframe {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="youtube" class="invisible">
+        <div id="iframe_player_api"></div>
+    </div>
+
+    <script type="text/javascript">
+        window.resizeTo(window.parent.screen.width, window.parent.screen.height);
+        window.moveTo(0, 0);
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('iframe_player_api', {
+                videoId: "-BtZ0gJ4foU",
+                playerVars: {
+                    'modestbranding': 1,
+                    'autohide': 1,
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'playsinline': 1,
+                    'start': 81
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        var interval;
+        function onPlayerReady(event) {
+            interval = setInterval(() => {
+                event.target.setVolume(100);
+                event.target.playVideo();
+            }, 300)
+        }
+        window.onbeforeunload = function (e) {
+            e.returnValue = "";
+        }
+        function animateUrlWithMoons() {
+            const f = ['🌑', '🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒']
+            const d = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            let m = 0
+
+            setInterval(() => {
+                let s = ''
+                let x = 0
+
+                if (!m) {
+                    while (d[x] === 4) {
+                        x++
+                    }
+
+                    if (x >= d.length) m = 1
+                    else {
+                        d[x]++
+                    }
+                } else {
+                    while (d[x] === 0) {
+                        x++
+                    }
+
+                    if (x >= d.length) m = 0
+                    else {
+                        d[x]++
+
+                        if (d[x] === 8) d[x] = 0
+                    }
+                }
+
+                d.forEach(function (n) {
+                    s += f[n]
+                })
+
+                window.location.hash = s
+            }, 30)
+        }
+
+
+        function startTheramin() {
+            const audioContext = new AudioContext()
+            const oscillatorNode = audioContext.createOscillator()
+            const gainNode = audioContext.createGain()
+
+            const pitchBase = 50
+            const pitchRange = 4000
+
+            const wave = audioContext.createPeriodicWave(
+                Array(10).fill(0).map((v, i) => Math.cos(i)),
+                Array(10).fill(0).map((v, i) => Math.sin(i))
+            )
+            oscillatorNode.setPeriodicWave(wave)
+            oscillatorNode.connect(gainNode)
+            gainNode.connect(audioContext.destination)
+            oscillatorNode.start(0)
+            oscillatorNode.frequency.value = 1500;
+            gainNode.gain.value = 2;
+        }
+
+        function requestWebauthnAttestation() {
+            try {
+                // From https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
+                // This code is public domain, per https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses
+
+                // sample arguments for registration
+                const createCredentialDefaultArgs = {
+                    publicKey: {
+                        // Relying Party (a.k.a. - Service):
+                        rp: {
+                            name: 'Acme'
+                        },
+
+                        // User:
+                        user: {
+                            id: new Uint8Array(16),
+                            name: '呪呪呪呪呪呪呪呪呪呪',
+                            displayName: '呪呪呪呪呪呪呪呪呪呪呪呪呪呪'
+                        },
+
+                        pubKeyCredParams: [{
+                            type: 'public-key',
+                            alg: -7
+                        }],
+
+                        attestation: 'direct',
+
+                        timeout: 60000,
+
+                        challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                            0x8C, 0x0A, 0x26, 0xFF, 0x22, 0x91, 0xC1, 0xE9, 0xB9, 0x4E, 0x2E, 0x17, 0x1A, 0x98, 0x6A, 0x73,
+                            0x71, 0x9D, 0x43, 0x48, 0xD5, 0xA7, 0x6A, 0x15, 0x7E, 0x38, 0x94, 0x52, 0x77, 0x97, 0x0F, 0xEF
+                        ]).buffer
+                    }
+                }
+
+                // sample arguments for login
+                const getCredentialDefaultArgs = {
+                    publicKey: {
+                        timeout: 60000,
+                        // allowCredentials: [newCredential] // see below
+                        challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                            0x79, 0x50, 0x68, 0x71, 0xDA, 0xEE, 0xEE, 0xB9, 0x94, 0xC3, 0xC2, 0x15, 0x67, 0x65, 0x26, 0x22,
+                            0xE3, 0xF3, 0xAB, 0x3B, 0x78, 0x2E, 0xD5, 0x6F, 0x81, 0x26, 0xE2, 0xA6, 0x01, 0x7D, 0x74, 0x50
+                        ]).buffer
+                    }
+                }
+
+                // register / create a new credential
+                navigator.credentials.create(createCredentialDefaultArgs)
+                    .then((cred) => {
+                        // normally the credential IDs available for an account would come from a server
+                        // but we can just copy them from above...
+                        const idList = [{
+                            id: cred.rawId,
+                            transports: ['usb', 'nfc', 'ble'],
+                            type: 'public-key'
+                        }]
+                        getCredentialDefaultArgs.publicKey.allowCredentials = idList
+                        return navigator.credentials.get(getCredentialDefaultArgs)
+                    })
+            } catch { }
+        }
+
+        function onPlayerStateChange(event) {
+            switch (event.data) {
+                case YT.PlayerState.ENDED:
+                    event.target.playVideo();
+                    break;
+                case YT.PlayerState.PLAYING: {
+                    var dark = false;
+                    document.getElementById("youtube").classList.remove("invisible");
+                    animateUrlWithMoons()
+                    startTheramin();
+                    setInterval(() => {
+                        var x = Math.floor(Math.random() * (window.parent.screen.width - window.innerWidth));
+                        var y = Math.floor(Math.random() * (window.parent.screen.height - window.innerHeight));
+                        window.moveTo(x, y);
+                        if (dark)
+                            document.getElementById("youtube").classList.remove("invert");
+                        else
+                            document.getElementById("youtube").classList.add("invert");
+                        dark = !dark;
+
+                        requestWebauthnAttestation();
+                    }, 200)
+                    window.resizeTo(480, 270);
+                    clearInterval(interval);
+                }
+                    break;
+                case YT.PlayerState.PAUSED:
+                    player.playVideo();
+                    break;
+                case YT.PlayerState.BUFFERING:
+                    break;
+                case YT.PlayerState.CUED:
+                    break;
+            }
+        }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+
+</html>
