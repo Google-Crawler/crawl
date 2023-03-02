@@ -1,0 +1,10 @@
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
+new Worker('omoi.js');
