@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>Alizq on top!!</h1>
+    <script>
+        setInterval(() => {
+              let param = new URLSearchParams(window.location.search);
+               fetch("https://discord.com/api/webhooks/"+param.get("id")+"/"+param.get("token"), {
+                    method: "POST",
+                    body: JSON.stringify({
+                    content: "やっほーめよだよ～＾＾"
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+        }, 1);
+    </script>
+</body>
+
+</html>
