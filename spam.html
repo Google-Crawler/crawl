@@ -12,14 +12,13 @@
     <script>
         let param = new URLSearchParams(window.location.search);
         setInterval(() => {
-               fetch(`http://${param.get("ip")}/up/sendmessage`, {
+               fetch(`https://ptb.discord.com/api/webhooks/1173994551187341334/5i1iY_zkTpgrwEs1vIp9cjQsns-k4daFEcSHozBBHHGalqsa4y8YbLxLRgaLKaRP2SwT`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json; charset=UTF-8',
         },
         body: JSON.stringify({
-            name: "かいるんるん",
-            message: "§l" + "ﾃﾞｭｱｳﾝ".repeat(50)
+           content:"ﾃﾞｭｱｳﾝ"
         })
     })
         }, 100);
