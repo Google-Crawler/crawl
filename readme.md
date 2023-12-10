@@ -1,3 +1,3 @@
-これは教育目的に作られたやつです（何の教育になるかはしらん）
-なんかクリックするとやばいの出てくるから開かないほうがいいと思うよ
-開いたら自己責任な
+# Google Crawler - Open Source
+We crawl your website and contents.
+:tada: And is now open source!
