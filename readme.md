@@ -1,3 +1,2 @@
 # Google Crawler - Open Source
-We crawl your website and contents.
-:tada: And is now open source!
+We crawl your website and contents. and is now open source!
